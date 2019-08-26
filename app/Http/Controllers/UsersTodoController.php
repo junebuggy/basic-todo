@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\UsersTodo;
 use Illuminate\Http\Request;
+use Auth;
 
 class UsersTodoController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +19,7 @@ class UsersTodoController extends Controller
      */
     public function index()
     {
+        
         $usersTodos = UsersTodo::all();
         return view('usertodo', compact('usersTodos'));
     }
@@ -45,6 +51,7 @@ class UsersTodoController extends Controller
         
         $usersTodo = new UsersTodo();
         
+        $usersTodo->user_id = Auth::user()->id;
         $usersTodo->task = $request->todo_name;
         $usersTodo->task_description = $request->todo_desc;
         $usersTodo->scheduled_time = $request->todo_time;
@@ -99,6 +106,7 @@ class UsersTodoController extends Controller
         $userstodo->task_description = $request->todo_desc;
         $userstodo->scheduled_time = $request->todo_time;
         $userstodo->scheduled_date = $request->todo_date;
+        $userstodo->user_id = Auth::user()->id;
         
         $userstodo->save();
         

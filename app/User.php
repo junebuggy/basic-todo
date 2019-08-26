@@ -36,4 +36,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    /**
+     * Get the Todos for the user.
+     */
+    public function usersTodo()
+    {
+        return $this->hasMany('App\UsersTodo');
+    }
 }

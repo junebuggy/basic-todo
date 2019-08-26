@@ -15,6 +15,7 @@ class CreateUsersTodosTable extends Migration
     {
         Schema::create('users_todos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('user_id');
             $table->String('task');
             $table->String('task_description');
             $table->Time('scheduled_time');

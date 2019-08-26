@@ -25,7 +25,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($usersTodos as $userTodo)
+                            @foreach(Auth::user()->UsersTodo as $userTodo)
                             <tr>
                                 <td>{{$userTodo->id}}</td>
                                 <td>{{$userTodo->task}}</td>
