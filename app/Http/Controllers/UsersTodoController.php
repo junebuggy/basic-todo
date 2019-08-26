@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\UsersTodo;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreUserTodo;
 use Auth;
 
 class UsersTodoController extends Controller
@@ -40,14 +41,16 @@ class UsersTodoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserTodo $request)
     {
+        /*
         $request->validate([
             'todo_name' => 'required|max:255',
             'todo_desc' => 'required|max:255',
             'todo_time' => 'required',
             'todo_date' => 'required|date',
         ]);
+        */
         
         $usersTodo = new UsersTodo();
         
@@ -93,14 +96,16 @@ class UsersTodoController extends Controller
      * @param  \App\UsersTodo  $usersTodo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UsersTodo $userstodo)
+    public function update(StoreUserTodo $request, UsersTodo $userstodo)
     {
+        /*
         $request->validate([
             'todo_name' => 'required|max:255',
             'todo_desc' => 'required|max:255',
             'todo_time' => 'required',
             'todo_date' => 'required|date',
         ]);
+        */
         
         $userstodo->task = $request->todo_name;
         $userstodo->task_description = $request->todo_desc;
